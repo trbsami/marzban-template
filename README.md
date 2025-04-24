@@ -2,6 +2,12 @@
 
 **Marzban Template** یک قالب رابط کاربری سبک و واکنش‌گرا برای پنل مارزبان است. این قالب با HTML و TailwindCSS ساخته شده و به‌راحتی قابل ویرایش و استفاده می‌باشد.
 
+<p align="center">
+  <a href="https://github.com/samimifar/marzban-templates" target="_blank" rel="noopener noreferrer" >
+    <img src="[https://github.com/samimifar/marzban-template/blob/main/img/marzban-template.png](https://github.com/trbsami/marzban-template/blob/main/marzban-template.png)" alt="SubPage screenshots" width="800" height="auto">
+  </a>
+</p>
+
 ## ویژگی‌ها
 - ⚡ سبک و سریع
 - 🎨 طراحی‌شده با TailwindCSS
@@ -28,7 +34,7 @@
    sudo marzban restart
    
 **تمام حقوق مادی و معنوی این پروژه متعلق به:**  
-trbSami [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?logo=telegram&logoColor=white)](https://t.me/samimifar)
+trbSami [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?logo=telegram&logoColor=white)](https://t.me/trbsami)
 
 
 ## حمایت از من
