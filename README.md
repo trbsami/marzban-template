@@ -28,7 +28,7 @@
    sudo marzban restart
    
 **تمام حقوق مادی و معنوی این پروژه متعلق به:**  
-[![Join me on Telegram](https://img.shields.io/badge/Join_Telegram-26A5E4?logo=telegram&logoColor=white&style=flat-square)](https://t.me/trbsami)
+trbSami [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?logo=telegram&logoColor=white)](https://t.me/samimifar)
 
 
 ## حمایت از من
