@@ -11,6 +11,4 @@
 ## نحوه استفاده
 
 ```bash
-git clone https://github.com/trbsami/marzban-template.git
-cd marzban-template
-index.html را در مرورگر باز کنید
+sudo wget -N -P /var/lib/marzban/templates/subscription/ https://raw.githubusercontent.com/trbsami/marzban-template/refs/heads/main/index.html
