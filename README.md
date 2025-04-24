@@ -23,10 +23,10 @@
    echo 'SUBSCRIPTION_PAGE_TEMPLATE="subscription/index.html"' | sudo tee -a /opt/marzban/.env
 3. **ریستارت مرزبان ** :
 
-   
-```bash
-   sudo marzban restart
 
+   ```bash
+   sudo marzban restart
+   
 **تمام حقوق مادی و معنوی این پروژه متعلق به:**  
 [![Join me on Telegram](https://img.shields.io/badge/Join_Telegram-26A5E4?logo=telegram&logoColor=white&style=flat-square)](https://t.me/trbsami)
 
