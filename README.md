@@ -3,7 +3,7 @@
 **Marzban Template** یک قالب رابط کاربری سبک و واکنش‌گرا برای پنل مارزبان است. این قالب با HTML و TailwindCSS ساخته شده و به‌راحتی قابل ویرایش و استفاده می‌باشد.
 <p align="center">
   <a href="https://github.com/trbsami/marzban-template" target="_blank" rel="noopener noreferrer">
-    <img src="https://raw.githubusercontent.com/trbsami/marzban-template/main/marzban-template.png" alt="SubPage screenshots" width="800" height="auto">
+    <img src="https://raw.githubusercontent.com/trbsami/marzban-template/main/IMG_20250424_231519_470.png" alt="SubPage screenshots" width="800" height="auto">
   </a>
 </p>
 
