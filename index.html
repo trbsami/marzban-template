@@ -105,7 +105,6 @@
       background: rgba(0, 0, 0, 0.1);
     }
 
-   /* استایل پایه */
 .proxy-actions button {
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -132,14 +131,14 @@
 [data-theme="light"] .proxy-actions button {
   background-color: rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.2);
-  color: #059669; /* سبز تیره برای کنتراست بهتر */
-  filter: none; /* حذف drop-shadow سفید */
+  color: #059669;
+  filter: none; 
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
 
 [data-theme="light"] .proxy-actions button:hover {
   background-color: rgba(0, 0, 0, 0.1);
-  color: #10b981; /* سبز روشن‌تر روی هاور */
+  color: #10b981; 
   transform: translateY(-4px);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
@@ -427,7 +426,7 @@
   gap: 0.5rem;
   margin-bottom: 0.75rem;
   cursor: pointer;
-  transition: all 0.3s ease; /* انیمیشن نرم */
+  transition: all 0.3s ease; 
   font-size: 1rem;
   font-weight: 500;
   color: #ffffff;
@@ -443,10 +442,9 @@
 .qr-btn:hover i {
   background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
   color: #f0fdf4;
-  transform: translateY(-5px); /* این خط باعث میشه روی هاور دکمه بره بالا */
+  transform: translateY(-5px); 
 }
 
-/* تم روشن */
 [data-theme="light"] .qr-btn {
   background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%);
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -486,14 +484,12 @@
       color: white;
     }
 
-    /* کلاس برای تم روشن */
 .light-theme {
-  color: #000000; /* رنگ متن سیاه برای تم روشن */
+  color: #000000; 
 }
 
-/* کلاس برای تم تاریک */
 .dark-theme {
-  color: #ffffff; /* رنگ متن سفید برای تم تاریک */
+  color: #ffffff; 
 }
 [data-theme="light"] .font-semibold {
     color: #000000;
@@ -512,7 +508,6 @@
   </div>
 </div>
 
-<!-- مدال تنظیمات -->
 <div class="modal-overlay" id="settingsModal" onclick="closeModalAndRefresh()">
   <div class="modal" onclick="event.stopPropagation()">
     <div class="modal-title" data-i18n="settings"></div>
@@ -540,12 +535,9 @@
   });
 </script>
 
-<!-- گلس کارت کلی -->
 <div id="card" class="glass-card mb-6 p-4 rounded-2xl shadow-lg opacity-0 transition-opacity duration-300">
-<!-- بخش پنل کاربری (مستطیل تمام‌عرض، مدرن و جمع‌وجور) -->
 <div class="glass-card p-3 rounded-xl shadow-md mb-4 bg-gradient-to-r from-indigo-800/40 to-purple-800/40">
   <div class="flex items-center justify-between gap-4">
-    <!-- نام کاربری و دکمه‌ها (سمت راست) -->
     <div class="flex items-center gap-2">
       <span id="username" class="text-lg font-semibold text-indigo-100">{{ user.username }}</span>
       <button onclick="copyUsername()" class="btn-primary rounded-lg p-1.5 flex items-center justify-center gap-2 transition-all duration-200 hover:shadow-lg">
@@ -556,7 +548,6 @@
         <span data-i18n="settings"></span>
       </button>
     </div>
-    <!-- آیکون و عنوان (سمت چپ) -->
     <div class="flex items-center gap-2">
       <i class="fas fa-user-astronaut text-2xl text-indigo300 glow-icon animate-pulse"></i>
       <h3 class="text-base font-bold text-white" data-i18n="user_panel"></h3>
@@ -564,10 +555,8 @@
   </div>
 </div>
 
-  <!-- گرید برای دو کارت -->
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 animate-fade-in">
 
-    <!-- کارت اطلاعات اشتراک -->
     <div class="glass-card stat-card p-4 rounded-xl bg-gradient-to-br from-gray-800/30 to-indigo-800/30 shadow-md">
       <div class="flex justify-between items-center mb-3">
         <h3 class="text-lg font-semibold text-white" data-i18n="subscription_info">اطلاعات اشتراک</h3>
@@ -593,7 +582,6 @@
       </div>
     </div>
 
-    <!-- کارت اطلاعات کاربر -->
     <div class="glass-card stat-card p-4 rounded-xl bg-gradient-to-br from-gray-800/30 to-indigo-800/30 shadow-md">
       <div class="flex justify-between items-center mb-3">
         <h3 class="text-lg font-semibold text-white" data-i18n="user_info">اطلاعات کاربر</h3>
@@ -647,24 +635,22 @@
     </div>
     <script>
 
-      // تابع برای باز کردن مودال
+     
       function openModal() {
           const modal = document.getElementById('settingsModal');
           if (modal) {
-              modal.classList.add('active'); // باز کردن مودال
+              modal.classList.add('active'); 
           }
       }
       
-      // تابع برای بستن مودال و رفرش صفحه
       function closeModalAndRefresh() {
           const modal = document.getElementById('settingsModal');
           if (modal) {
-              modal.classList.remove('active'); // بستن مودال
+              modal.classList.remove('active'); 
           }
-          location.reload(); // رفرش صفحه
+          location.reload(); 
       }
       
-      // تابع برای تغییر بخش‌های تنظیمات (تم یا زبان)
       function toggleSection(section) {
           const themeSection = document.getElementById('theme-section');
           const languageSection = document.getElementById('language-section');
@@ -684,7 +670,6 @@
           }
       }
       
-      // تابع برای تنظیم تم
       function setTheme(theme) {
           currentTheme = theme;
           document.body.setAttribute('data-theme', theme);
@@ -695,24 +680,19 @@
                   btn.classList.toggle('active', t === theme);
               }
           });
-          // رفرش صفحه پس از تغییر تم
           location.reload();
       }
       
-      // ذخیره زبان جدید و رفرش صفحه
       function setLanguage(lang) {
-          localStorage.setItem('language', lang);  // ذخیره زبان جدید در localStorage
-          document.body.setAttribute('data-language', lang);  // تغییر زبان در تگ body
-          currentLanguage = lang; // به‌روزرسانی متغیر زبان
+          localStorage.setItem('language', lang);  
+          document.body.setAttribute('data-language', lang);  
+          currentLanguage = lang; 
       
-          // به‌روزرسانی ترجمه‌ها
           updateTranslations();
       
-          // رفرش صفحه پس از تغییر زبان
           location.reload();
       }
       
-      // به‌روزرسانی ترجمه‌ها در صفحه
       function updateTranslations() {
           document.querySelectorAll('[data-i18n]').forEach(el => {
               const key = el.getAttribute('data-i18n');
@@ -722,9 +702,7 @@
           });
       }
       
-      // بارگذاری زبان و تم از localStorage و تنظیم پیش‌فرض‌ها
       function loadSettings() {
-          // بارگذاری زبان
           const savedLanguage = localStorage.getItem('language');
           if (savedLanguage) {
               currentLanguage = savedLanguage;
@@ -735,7 +713,6 @@
               document.body.setAttribute('data-language', 'fa');
           }
       
-          // بارگذاری تم
           const savedTheme = localStorage.getItem('theme');
           if (savedTheme) {
               currentTheme = savedTheme;
@@ -746,10 +723,8 @@
               document.body.setAttribute('data-theme', 'dark');
           }
       
-          // به‌روزرسانی ترجمه‌ها
           updateTranslations();
       
-          // تنظیم کلاس active برای دکمه‌های تم و زبان
           ['light', 'dark'].forEach(t => {
               const btn = document.getElementById(`btn-${t}`);
               if (btn) {
@@ -765,14 +740,12 @@
           });
       }
       
-      // لود اولیه تنظیمات
       document.addEventListener('DOMContentLoaded', function () {
           loadSettings();
       });
       </script>
       
       
-    <!-- اسکریپت‌های کپی و چرخش -->
     <script>
     function copyUsername() {
       const username = document.getElementById('username').innerText;
@@ -786,12 +759,11 @@
       icon.classList.add('spin');
       setTimeout(() => {
         icon.classList.remove('spin');
-        openModal(); // تابع باز شدن مدال
+        openModal(); 
       }, 600);
     }
     </script>
     
-    <!-- استایل -->
     <style>
     @keyframes spinAnimation {
       0% { transform: rotate(0deg); }
@@ -801,19 +773,18 @@
       animation: spinAnimation 0.6s linear;
     }
     
-    /* تغییر رنگ متن با تم */
     .username-text, .description-text {
       transition: color 0.3s ease;
     }
     
     body.light .username-text,
     body.light .description-text {
-      color: #111827; /* مشکی در تم روشن */
+      color: #111827; 
     }
     
     body.dark .username-text,
     body.dark .description-text {
-      color: #F9FAFB; /* سفید در تم تاریک */
+      color: #F9FAFB; 
     }
     </style>
     
@@ -856,7 +827,6 @@ function getTimeAgo(dateString) {
     return result || translations['less_than_minute'][currentLanguage];
 }
 
-// تنظیم استایل‌ها
 function setPrimaryStyle(elem) {
     elem.className = 'font-semibold text-black dark:text-white';
 }
@@ -865,7 +835,6 @@ function setSecondaryStyle(elem) {
     elem.className = 'font-semibold text-gray-500 dark:text-gray-400';
 }
 
-// دریافت داده‌های مصرف
 async function getUsageData() {
     const usageUrl = "{{ user.subscription_url }}/usage";
     try {
@@ -879,7 +848,6 @@ async function getUsageData() {
     }
 }
 
-// تبدیل ترافیک به عدد
 function parseTraffic(traffic) {
     if (typeof traffic === 'number') return traffic;
     if (typeof traffic === 'string') {
@@ -897,7 +865,6 @@ function parseTraffic(traffic) {
     return 0;
 }
 
-// پیدا کردن نود پرمصرف
 function findMostUsedNode(usages) {
     if (!Array.isArray(usages) || usages.length === 0) return null;
     return usages.reduce((max, node) => {
@@ -907,7 +874,6 @@ function findMostUsedNode(usages) {
     }, null);
 }
 
-// به‌روزرسانی لوکیشن پرمصرف
 async function updateFavoriteLocation() {
     const usages = await getUsageData();
     const topNode = findMostUsedNode(usages);
@@ -939,7 +905,6 @@ async function updateFavoriteLocation() {
     setSecondaryStyle(nameElem);
 }
 
-// به‌روزرسانی تاریخ انقضا
 function updateExpirationDate() {
     const expireSpan = document.getElementById('statusExpireDate');
     const userExpireTimestamp = {{ user.expire if user.expire else 'null' }};
@@ -954,9 +919,7 @@ function updateExpirationDate() {
     }
 }
 
-// لود اولیه
 document.addEventListener('DOMContentLoaded', function () {
-    // تنظیم آخرین اتصال
     const lastOnlineSpan = document.getElementById('last-online');
     {% if user.online_at %}
         const lastOnlineTime = '{{ user.online_at }}';
@@ -966,10 +929,8 @@ document.addEventListener('DOMContentLoaded', function () {
     {% endif %}
     lastOnlineSpan.classList.add('font-semibold', 'text-black', 'dark:text-white');
 
-    // به‌روزرسانی تاریخ انقضا
     updateExpirationDate();
 
-    // به‌روزرسانی لوکیشن پرمصرف
     updateFavoriteLocation();
 });
 </script>
@@ -994,7 +955,6 @@ document.addEventListener('DOMContentLoaded', function () {
   
 
 
-  <!-- بخش اپلیکیشن‌ها -->
   <div class="glass-card mb-1 p-3">
     <div class="flex justify-between items-center cursor-pointer" onclick="toggleSection('applications')">
     <div class="flex items-center gap-2">
@@ -1004,7 +964,6 @@ document.addEventListener('DOMContentLoaded', function () {
     <i class="fas fa-chevron-down chevron transition-transform" id="applicationsChevron"></i>
   </div>
   <div class="section-content mt-4" id="applicationsContent">
-    <!-- اندروید -->
     <div class="mb-6">
       <div class="flex justify-between items-center cursor-pointer p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200" onclick="toggleSection('android')">
         <div class="flex items-center gap-4">
@@ -1015,7 +974,6 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
       <div class="section-content px-3 mt-3" id="androidContent">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-3">
-          <!-- Hiddify -->
           <div class="rounded-xl p-5 flex flex-col gap-3 min-h-[180px] shadow-md hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-700">
             <div class="flex items-center gap-4">
               <svg class="w-12 h-12 rounded-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
@@ -1033,7 +991,6 @@ document.addEventListener('DOMContentLoaded', function () {
               </a>
             </div>
           </div>
-          <!-- v2rayNG -->
           <div class="rounded-xl p-5 flex flex-col gap-3 min-h-[180px] shadow-md hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-700">
             <div class="flex items-center gap-4">
               <svg class="w-12 h-12 rounded-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
@@ -1058,7 +1015,6 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
       </div>
     </div>
-    <!-- iOS -->
     <div class="mb-6">
       <div class="flex justify-between items-center cursor-pointer p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200" onclick="toggleSection('ios')">
         <div class="flex items-center gap-4">
@@ -1069,7 +1025,6 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
       <div class="section-content px-3 mt-3" id="iosContent">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-3">
-          <!-- Shadowrocket -->
           <div class="rounded-xl p-5 flex flex-col gap-3 min-h-[180px] shadow-md hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-700">
             <div class="flex items-center gap-4">
               <svg class="w-12 h-12 rounded-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
@@ -1087,7 +1042,6 @@ document.addEventListener('DOMContentLoaded', function () {
               </a>
             </div>
           </div>
-          <!-- Streisand -->
           <div class="rounded-xl p-5 flex flex-col gap-3 min-h-[180px] shadow-md hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-700">
             <div class="flex items-center gap-4">
               <svg class="w-12 h-12 rounded-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
@@ -1112,7 +1066,6 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
       </div>
     </div>
-    <!-- ویندوز -->
     <div class="mb-6">
       <div class="flex justify-between items-center cursor-pointer p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200" onclick="toggleSection('windows')">
         <div class="flex items-center gap-4">
@@ -1123,7 +1076,6 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
       <div class="section-content px-3 mt-3" id="windowsContent">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-3">
-          <!-- v2rayN -->
           <div class="rounded-xl p-5 flex flex-col gap-3 min-h-[180px] shadow-md hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-700">
             <div class="flex items-center gap-4">
               <svg class="w-12 h-12 rounded-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
@@ -1141,7 +1093,6 @@ document.addEventListener('DOMContentLoaded', function () {
               </a>
             </div>
           </div>
-          <!-- Nekoray -->
           <div class="rounded-xl p-5 flex flex-col gap-3 min-h-[180px] shadow-md hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-700">
             <div class="flex items-center gap-4">
               <svg class="w-12 h-12 rounded-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
@@ -1176,7 +1127,6 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 
   <script>
-    // متغیرهای گلوبال
     let currentLanguage = localStorage.getItem('language') || 'fa';
     let currentTheme = localStorage.getItem('theme') || 'dark';
     let userStatus = '{{ user.status }}';
@@ -1416,12 +1366,10 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    // تابع برای تولید پینگ تصادفی
     function getRandomPing(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    // نمایش پروکسی‌ها
     async function displayProxies() {
       const proxyList = document.getElementById('proxyList');
       if (!proxyList) return;
@@ -1475,7 +1423,6 @@ qrSubButton.addEventListener('click', function() {
       buttonContainer.appendChild(qrSubButton);
       proxyList.appendChild(buttonContainer);
 
-      // نمایش پروکسی‌ها
       for (const link of links) {
         if (!link || link === 'False') continue;
         const name = getProxyName(link);
@@ -1491,7 +1438,7 @@ qrSubButton.addEventListener('click', function() {
           proxyName.textContent = name;
           proxyInfo.appendChild(proxyName);
 
-          const ping = getRandomPing(50, 500);  // تولید پینگ تصادفی بین 50 تا 500
+          const ping = getRandomPing(50, 500);  
           const pingSpan = document.createElement('span');
           pingSpan.className = 'text-sm text-gray-900';
           pingSpan.textContent = `${translations['ping'][currentLanguage]} ${ping}${translations['ms'][currentLanguage]}`;
