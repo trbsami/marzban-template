@@ -1006,7 +1006,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 <i class="fab fa-google-play mr-1"></i>
                 <span data-i18n="download_from_playstore">گوگل پلی</span>
               </a>
-              <button class="rounded-lg p-3 flex-1 text-center text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200" onclick="window.open('v2rayng://install-config?url={{ user.subscription_url }}#{{ user.username }}')">
+              <button                 onclick="window.open('v2rayng://install-config?url={{ user.subscription_url }}#{{ user.username }}')"
+            
+              class="rounded-lg p-3 flex-1 text-center text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200" onclick="window.open('v2rayng://install-config?url={{ user.subscription_url }}#{{ user.username }}')">
                 <i class="fas fa-plus mr-1"></i>
                 <span data-i18n="add_subscription_v2rayng">اضافه به v2rayNG</span>
               </button>
@@ -1057,7 +1059,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 <i class="fab fa-app-store-ios mr-1"></i>
                 <span data-i18n="download_from_appstore">App Store</span>
               </a>
-              <button class="rounded-lg p-3 flex-1 text-center text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 transition-colors duration-200" onclick="window.open('streisand://import/{{ user.subscription_url }}#{{ user.username }}')">
+              <button onclick="window.open('streisand://import/{{ user.subscription_url }}#{{ user.username }}')"
+              class="rounded-lg p-3 flex-1 text-center text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 transition-colors duration-200" onclick="window.open('streisand://import/{{ user.subscription_url }}#{{ user.username }}')">
                 <i class="fas fa-plus mr-1"></i>
                 <span data-i18n="add_subscription_streisand">اضافه به Streisand</span>
               </button>
