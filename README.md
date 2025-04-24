@@ -10,9 +10,9 @@
 
 ---
 
-## Installation
+## نحوه استفاده
 
-To use this template in your project, follow these steps:
+برای استفاده از این قالب در پروژه خود، مراحل زیر را دنبال کنید:
 
 1. **فایل رو در سرور خود نصب کنید**:
    ```bash
@@ -27,3 +27,10 @@ To use this template in your project, follow these steps:
 ```bash
    sudo marzban restart
 
+**تمام حقوق مادی و معنوی این پروژه متعلق به:**  
+[![Join me on Telegram](https://img.shields.io/badge/Join_Telegram-26A5E4?logo=telegram&logoColor=white&style=flat-square)](https://t.me/trbsami)
+
+
+## حمایت از من
+- **TON:** `UQDj12cOZIrM1Ft11Pc38wVi2fx2mg-L8gZRFmLEb4jBdET7`
+- **TRX:** `TYD5azd2aiu1JGaGD7thvT2oRKu376Zga6`
