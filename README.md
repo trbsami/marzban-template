@@ -1,6 +1,6 @@
 # Marzban Template
 
-**Marzban Template** یک قالب رابط کاربری سبک و واکنش‌گرا برای پنل مارزبان است. این قالب با HTML و TailwindCSS ساخته شده و به‌راحتی قابل ویرایش و استفاده می‌باشد.
+**Marzban Template** یک قالب رابط کاربری سبک و زیبا برای پنل مرزبان است. این قالب با HTML و TailwindCSS ساخته شده و به‌راحتی قابل ویرایش و استفاده می‌باشد.
 <p align="center">
   <a href="https://github.com/trbsami/marzban-template" target="_blank" rel="noopener noreferrer">
     <img src="https://raw.githubusercontent.com/trbsami/marzban-template/main/IMG_20250424_231519_470.png" alt="SubPage screenshots" width="800" height="auto">
@@ -35,10 +35,10 @@
    ```bash
    sudo marzban restart
    
-**تمام حقوق مادی و معنوی این پروژه متعلق به:**  
-trbSami [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?logo=telegram&logoColor=white)](https://t.me/trbsami)
+**چنل ما در تلکرام :**  
+trbSami   [![Telegram](https://img.shields.io/badge/Telegram-26A5E4?logo=telegram&logoColor=white)](https://t.me/trbsami)
 
 
-## حمایت از من
+## حمایت از ما
 - **TON:** `UQDj12cOZIrM1Ft11Pc38wVi2fx2mg-L8gZRFmLEb4jBdET7`
 - **TRX:** `TYD5azd2aiu1JGaGD7thvT2oRKu376Zga6`
