@@ -1,0 +1,328 @@
+ </div>
+</div>
+
+
+  </div>
+</div>
+
+<div class="modal-overlay" id="settingsModal" onclick="closeModalAndRefresh()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-title" data-i18n="settings"></div>
+    <div class="toggle-btns">
+      <button class="toggle-btn active" id="btn-theme" onclick="toggleSection('theme')" data-i18n="theme">تم</button>
+      <button class="toggle-btn" id="btn-language" onclick="toggleSection('language')" data-i18n="language">زبان</button>
+    </div>
+    <div id="theme-section" class="settings-section">
+      <button class="option" id="btn-light" onclick="setTheme('light')" data-i18n="light_theme">تم روشن</button>
+      <button class="option active" id="btn-dark" onclick="setTheme('dark')" data-i18n="dark_theme">تم تاریک</button>
+    </div>
+    <div id="language-section" class="settings-section" style="display: none;">
+      <button class="option active" id="btn-fa" onclick="setLanguage('fa')" data-i18n="persian">فارسی</button>
+      <button class="option" id="btn-en" onclick="setLanguage('en')" data-i18n="english">English</button>
+      <button class="option" id="btn-ru" onclick="setLanguage('ru')" data-i18n="russian">Русский</button>
+    </div>
+    <div class="close-btn" onclick="closeModalAndRefresh()" data-i18n="close">بستن</div>
+  </div>
+</div>
+
+
+
+<div id="card" class="glass-card mb-6 p-4 rounded-2xl shadow-lg opacity-0 transition-opacity duration-300">
+<div class="glass-card p-3 rounded-xl shadow-md mb-4 bg-gradient-to-r from-indigo-800/40 to-purple-800/40">
+  <div class="flex items-center justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <span id="username" class="text-lg font-semibold text-indigo-100">{{ user.username }}</span>
+      <button onclick="copyUsername()" class="btn-primary rounded-lg p-1.5 flex items-center justify-center gap-2 transition-all duration-200 hover:shadow-lg">
+        <i class="fas fa-copy text-sm"></i>
+      </button>
+      <button onclick="handleSettingsClick()" class="btn-primary rounded-lg px-2 py-1 flex items-center justify-center gap-0 transition-all duration-200 hover:shadow-lg">
+        <i id="settingsIcon" class="fas fa-cog text-base animate-spin-slow"></i>
+        <span data-i18n="settings"></span>
+      </button>
+    </div>
+    <div class="flex items-center gap-2">
+      <i class="fas fa-user-astronaut text-2xl text-indigo300 glow-icon animate-pulse"></i>
+      <h3 class="text-base font-bold text-white" data-i18n="user_panel"></h3>
+    </div>
+  </div>
+</div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 animate-fade-in">
+
+    <div class="glass-card stat-card p-4 rounded-xl bg-gradient-to-br from-gray-800/30 to-indigo-800/30 shadow-md">
+      <div class="flex justify-between items-center mb-3">
+        <h3 class="text-lg font-semibold text-white" data-i18n="subscription_info">اطلاعات اشتراک</h3>
+        <i class="fas fa-info-circle text-2xl text-indigo300 glow-icon animate-pulse"></i>
+      </div>
+      <div class="font-semibold">
+        <div>
+          <span class="font-semibold" data-i18n="used_data">حجم استفاده‌شده:</span>
+          <span>{{ user.used_traffic | bytesformat }}</span>
+        </div>
+        <div>
+          <span class="font-semibold" data-i18n="time_remaining">زمان باقی‌مانده:</span>
+          {% if user.status == 'expired' %}
+            <span class="font-semibold" data-i18n="subscription_expired">اشتراک منقضی شده</span>
+          {% else %}
+            {% if user.expire %}
+              <span id="expirationValue"></span>
+            {% else %}
+              <span data-i18n="unlimited">نامحدود</span>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="glass-card stat-card p-4 rounded-xl bg-gradient-to-br from-gray-800/30 to-indigo-800/30 shadow-md">
+      <div class="flex justify-between items-center mb-3">
+        <h3 class="text-lg font-semibold text-white" data-i18n="user_info">اطلاعات کاربر</h3>
+        <i class="fas fa-user text-2xl text-indigo300 glow-icon animate-pulse"></i>
+      </div>
+      <div class="font-semibold">
+        <div class="flex items-center gap-2">
+          <span class="status-text" data-i18n="status">وضعیت:</span>
+          {% if user.status == 'active' %}
+            <span class="badge bg-green-500 text-white rounded-full px-3 py-1 text-xs" data-i18n="active">فعال</span>
+          {% elif user.status == 'limited' %}
+            <span class="badge bg-yellow-500 text-white rounded-full px-3 py-1 text-xs" data-i18n="limited">محدود</span>
+          {% elif user.status == 'expired' %}
+            <span class="badge bg-red-500 text-white rounded-full px-3 py-1 text-xs" data-i18n="expired">منقضی شده</span>
+          {% elif user.status == 'disabled' %}
+            <span class="badge bg-gray-500 text-white rounded-full px-3 py-1 text-xs" data-i18n="disabled">غیرفعال</span>
+          {% else %}
+            <span class="badge bg-gray-400 text-white rounded-full px-3 py-1 text-xs" data-i18n="unknown">نامشخص</span>
+          {% endif %}
+        </div>
+        <div class="font-semibold">
+          <span class="status-text" data-i18n="expire_date">تاریخ انقضا:</span>
+          <span id="statusExpireDate" class="font-semibold"></span>
+        </div>
+        <div class="font-semibold">
+          <span data-i18n="total_data_label">حجم کل:</span>
+          {% if user.data_limit %}
+            <span class="font-semibold">{{ user.data_limit | bytesformat }}</span>
+          {% else %}
+            <span class="font-semibold" data-i18n="unlimited">نامحدود</span>
+          {% endif %}
+        </div>
+        <div class="font-semibold">
+          <span class="status-text" data-i18n="last_connection">آخرین اتصال:</span>
+          <span id="last-online" class="font-semibold"></span>
+        </div>
+        <div class="font-semibold">
+          <span id="favoriteLocationFlag" class="text-xl"></span>
+          <div>
+            <div class="flex items-center gap-2">
+              <span id="favoriteLocationLabel" class="font-semibold" data-i18n="favorite_location">لوکیشن پرمصرف:</span>
+              <span id="favoriteLocationName" class="text-gray-400 font-semibold"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    </div>
+
+
+
+
+</div>
+</div>
+</div>
+    </div>
+
+    <div class="glass-card mb-4 p-3">
+      <div class="flex justify-between items-center cursor-pointer" onclick="toggleSection('servers')">
+          <div class="flex items-center gap-2">
+              <i class="fas fa-link"></i>
+              <h3 class="font-semibold" data-i18n="servers">سرورها</h3>
+          </div>
+          <i class="fas fa-chevron-down chevron transition-transform" id="serversChevron"></i>
+      </div>
+      <div class="section-content mt-4" id="serversContent">
+          <div class="flex flex-col gap-2" id="proxyList"></div>
+      </div>
+  </div>
+  
+
+
+  <div class="glass-card mb-1 p-3">
+    <div class="flex justify-between items-center cursor-pointer" onclick="toggleSection('applications')">
+    <div class="flex items-center gap-2">
+      <i class="fas fa-box-open text-blue-500 dark:text-blue-400 text-xl"></i>
+      <h3 class="font-semibold" data-i18n="required_apps">برنامه‌های مورد نیاز</h3>
+    </div>
+    <i class="fas fa-chevron-down chevron transition-transform" id="applicationsChevron"></i>
+  </div>
+  <div class="section-content mt-4" id="applicationsContent">
+    <div class="mb-6">
+      <div class="flex justify-between items-center cursor-pointer p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200" onclick="toggleSection('android')">
+        <div class="flex items-center gap-4">
+          <i class="fab fa-android text-green-600 dark:text-green-400 text-lg"></i>
+          <h4 class="font-semibold text-base text-gray-700 dark:text-gray-200" data-i18n="android">اندروید</h4>
+        </div>
+        <i class="fas fa-chevron-down chevron transition-transform" id="androidChevron"></i>
+      </div>
+      <div class="section-content px-3 mt-3" id="androidContent">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-3">
+          <div class="rounded-xl p-5 flex flex-col gap-3 min-h-[180px] shadow-md hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-700">
+            <div class="flex items-center gap-4">
+              <svg class="w-12 h-12 rounded-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+                <rect width="40" height="40" rx="5" fill="#4CAF50"/>
+                <path d="M10 30L20 10L30 30H10Z" fill="#FFFFFF"/>
+                <path d="M15 25H25L20 15Z" fill="#4CAF50"/>
+              </svg>
+              <span class="font-semibold text-lg text-gray-800 dark:text-white" data-i18n="hiddify">Hiddify</span>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed" data-i18n="hiddify_desc">کلاینت متن‌باز برای V2Ray با UI ساده.</p>
+            <div class="flex gap-3">
+              <a href="https://play.google.com/store/apps/details?id=app.hiddify.com" target="_blank" class="rounded-lg p-3 flex-1 text-center text-sm font-medium text-white bg-green-600 hover:bg-green-700 transition-colors duration-200">
+                <i class="fab fa-google-play mr-1"></i>
+                <span data-i18n="download_from_playstore">گوگل پلی</span>
+              </a>
+            </div>
+          </div>
+          <div class="rounded-xl p-5 flex flex-col gap-3 min-h-[180px] shadow-md hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-700">
+            <div class="flex items-center gap-4">
+              <svg class="w-12 h-12 rounded-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+                <rect width="40" height="40" rx="5" fill="#1E88E5"/>
+                <path d="M10 30L20 10L30 30H10Z" fill="#FFFFFF"/>
+                <path d="M18 22L22 18M18 18L22 22" stroke="#1E88E5" stroke-width="2"/>
+              </svg>
+              <span class="font-semibold text-lg text-gray-800 dark:text-white" data-i18n="v2rayng_git">v2rayNG</span>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed" data-i18n="v2rayng_git_desc">کلاینت V2Ray با پشتیبانی از VMess و VLESS.</p>
+            <div class="flex gap-3">
+              <a href="https://play.google.com/store/apps/details?id=com.v2ray.ang" target="_blank" class="rounded-lg p-3 flex-1 text-center text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200">
+                <i class="fab fa-google-play mr-1"></i>
+                <span data-i18n="download_from_playstore">گوگل پلی</span>
+              </a>
+              <button                 onclick="window.open('v2rayng://install-config?url={{ user.subscription_url }}#{{ user.username }}')"
+            
+              class="rounded-lg p-3 flex-1 text-center text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200" onclick="window.open('v2rayng://install-config?url={{ user.subscription_url }}#{{ user.username }}')">
+                <i class="fas fa-plus mr-1"></i>
+                <span data-i18n="add_subscription_v2rayng">اضافه به v2rayNG</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-6">
+      <div class="flex justify-between items-center cursor-pointer p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200" onclick="toggleSection('ios')">
+        <div class="flex items-center gap-4">
+          <i class="fab fa-apple text-gray-500 dark:text-gray-300 text-lg"></i>
+          <h4 class="font-semibold text-base text-gray-700 dark:text-gray-200" data-i18n="ios">iOS</h4>
+        </div>
+        <i class="fas fa-chevron-down chevron transition-transform" id="iosChevron"></i>
+      </div>
+      <div class="section-content px-3 mt-3" id="iosContent">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-3">
+          <div class="rounded-xl p-5 flex flex-col gap-3 min-h-[180px] shadow-md hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-700">
+            <div class="flex items-center gap-4">
+              <svg class="w-12 h-12 rounded-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+                <rect width="40" height="40" rx="5" fill="#FF5722"/>
+                <path d="M12 28L20 12L28 28H12Z" fill="#FFFFFF"/>
+                <path d="M18 16L22 16M20 14L20 18" stroke="#FF5722" stroke-width="2"/>
+              </svg>
+              <span class="font-semibold text-lg text-gray-800 dark:text-white" data-i18n="shadowrocket">Shadowrocket</span>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed" data-i18n="shadowrocket_desc">کلاینت قدرتمند iOS (پولی).</p>
+            <div class="flex gap-3">
+              <a href="https://apps.apple.com/us/app/shadowrocket/id932747118" target="_blank" class="rounded-lg p-3 flex-1 text-center text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 transition-colors duration-200">
+                <i class="fab fa-app-store-ios mr-1"></i>
+                <span data-i18n="download_from_appstore">App Store</span>
+              </a>
+            </div>
+          </div>
+          <div class="rounded-xl p-5 flex flex-col gap-3 min-h-[180px] shadow-md hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-700">
+            <div class="flex items-center gap-4">
+              <svg class="w-12 h-12 rounded-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+                <rect width="40" height="40" rx="5" fill="#8E24AA"/>
+                <circle cx="20" cy="20" r="10" fill="#FFFFFF"/>
+                <path d="M16 24L24 16" stroke="#8E24AA" stroke-width="2"/>
+              </svg>
+              <span class="font-semibold text-lg text-gray-800 dark:text-white" data-i18n="streisand">Streisand</span>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed" data-i18n="streisand_desc">ابزار ساده برای مدیریت VPN در iOS.</p>
+            <div class="flex gap-3">
+              <a href="https://apps.apple.com/us/app/streisand/id6450534064" target="_blank" class="rounded-lg p-3 flex-1 text-center text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 transition-colors duration-200">
+                <i class="fab fa-app-store-ios mr-1"></i>
+                <span data-i18n="download_from_appstore">App Store</span>
+              </a>
+              <button onclick="window.open('streisand://import/{{ user.subscription_url }}#{{ user.username }}')"
+              class="rounded-lg p-3 flex-1 text-center text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 transition-colors duration-200" onclick="window.open('streisand://import/{{ user.subscription_url }}#{{ user.username }}')">
+                <i class="fas fa-plus mr-1"></i>
+                <span data-i18n="add_subscription_streisand">اضافه به Streisand</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-6">
+      <div class="flex justify-between items-center cursor-pointer p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200" onclick="toggleSection('windows')">
+        <div class="flex items-center gap-4">
+          <i class="fab fa-windows text-blue-600 dark:text-blue-400 text-lg"></i>
+          <h4 class="font-semibold text-base text-gray-700 dark:text-gray-200" data-i18n="windows">ویندوز</h4>
+        </div>
+        <i class="fas fa-chevron-down chevron transition-transform" id="windowsChevron"></i>
+      </div>
+      <div class="section-content px-3 mt-3" id="windowsContent">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-3">
+          <div class="rounded-xl p-5 flex flex-col gap-3 min-h-[180px] shadow-md hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-700">
+            <div class="flex items-center gap-4">
+              <svg class="w-12 h-12 rounded-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+                <rect width="40" height="40" rx="5" fill="#0288D1"/>
+                <path d="M10 30L20 10L30 30H10Z" fill="#FFFFFF"/>
+                <path d="M18 22L22 18M18 18L22 22" stroke="#0288D1" stroke-width="2"/>
+              </svg>
+              <span class="font-semibold text-lg text-gray-800 dark:text-white" data-i18n="v2rayn_git">v2rayN</span>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed" data-i18n="v2rayn_git_desc">کلاینت V2Ray برای ویندوز.</p>
+            <div class="flex gap-3">
+              <a href="https://github.com/2dust/v2rayN/releases/latest" target="_blank" class="rounded-lg p-3 flex-1 text-center text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200">
+                <i class="fab fa-github mr-1"></i>
+                <span data-i18n="download">GitHub</span>
+              </a>
+            </div>
+          </div>
+          <div class="rounded-xl p-5 flex flex-col gap-3 min-h-[180px] shadow-md hover:shadow-lg transition-all duration-300 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-700">
+            <div class="flex items-center gap-4">
+              <svg class="w-12 h-12 rounded-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+                <rect width="40" height="40" rx="5" fill="#E53935"/>
+                <path d="M12 28Q20 12 28 28H12Z" fill="#FFFFFF"/>
+                <circle cx="20" cy="16" r="3" fill="#E53935"/>
+              </svg>
+              <span class="font-semibold text-lg text-gray-800 dark:text-white" data-i18n="nekoray_git">Nekoray</span>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed" data-i18n="nekoray_git_desc">کلاینت پیشرفته برای ویندوز.</p>
+            <div class="flex gap-3">
+              <a href="https://github.com/MatsuriDayo/nekoray/releases/latest" target="_blank" class="rounded-lg p-3 flex-1 text-center text-sm font-medium text-white bg-red-600 hover:bg-red-700 transition-colors duration-200">
+                <i class="fab fa-github mr-1"></i>
+                <span data-i18n="download">GitHub</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="qr-modal" id="qrModal" onclick="closeQRModal()">
+    <div class="qr-container" onclick="event.stopPropagation()">
+      <h3 class="qr-title" data-i18n="server_qr">QR Code سرور</h3>
+      <div id="qrCodeCanvas"></div>
+      <button onclick="closeQRModal()">
+        <i class="fas fa-times"></i> <span data-i18n="close">بستن</span>
+      </button>
+    </div>
+  </div>
+
+
+</body>
+</html>
